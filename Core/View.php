@@ -20,6 +20,7 @@ class View
      */
     public static function render($view, $args = [])
     {
+        $view .= '.php';
         extract($args, EXTR_SKIP);
 
         $file = dirname(__DIR__) . "/App/Views/$view";  // relative to Core directory
@@ -41,6 +42,7 @@ class View
      */
     public static function renderTemplate($template, $args = [])
     {
+        $template .= '.php';
         static $twig = null;
 
         if ($twig === null) {

@@ -17,8 +17,26 @@ class Home extends \Core\Controller
      *
      * @return void
      */
-    public function indexAction()
+    public function index()
     {
-        View::renderTemplate('Home/index.html');
+        View::renderTemplate('Home/index');
+    }
+    /**
+     * Show the test page
+     *
+     * @return void
+     */
+    public function test()
+    {
+        $id = $this->route_params['id'];
+
+        if (isset($id))
+        {
+            echo '$id var' . '<br>' . 'id: ' . $id;
+        }
+        else
+        {
+            echo '$id yok ';
+        }
     }
 }

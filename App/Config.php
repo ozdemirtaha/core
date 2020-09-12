@@ -2,6 +2,8 @@
 
 namespace App;
 
+use http\Url;
+
 /**
  * Application configuration
  *
@@ -9,6 +11,13 @@ namespace App;
  */
 class Config
 {
+
+    /**
+     * WEBSITE URL
+     * Enter without "http://" or "https://"
+     * @var url
+     */
+    const WEBSITE_URL = 'localhost/tahtsoft/core/';
 
     /**
      * Database host
