@@ -5,7 +5,6 @@
     "autoload": {
         "psr-4": {
             "Core\\": "Core/",
-            "Helpers\\": "Helpers/",
             "App\\": "App/"
         }
     }

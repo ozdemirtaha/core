@@ -19,7 +19,7 @@ class Login extends \Core\Controller
 
     public function auth()
     {
-        redirect('http://www.tahaozdemir.com/');
+        Helper::redirect('http://www.tahaozdemir.com/');
         exit;
     }
 
