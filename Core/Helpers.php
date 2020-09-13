@@ -11,6 +11,6 @@ class Helpers
 {
     public static function redirect($url)
     {
-        echo 'url';
+        header("location: $url");
     }
 }

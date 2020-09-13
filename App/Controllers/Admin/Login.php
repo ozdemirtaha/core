@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use \Core\View;
+use \Core\Helpers;
 
 class Login extends \Core\Controller
 {
@@ -19,8 +20,7 @@ class Login extends \Core\Controller
 
     public function auth()
     {
-        redirect('http://www.tahaozdemir.com/');
-        exit;
+        Helpers::redirect('http://www.tahaozdemir.com/');
     }
 
 }
