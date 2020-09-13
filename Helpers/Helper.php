@@ -4,7 +4,8 @@ namespace helpers;
 
 class Helper
 {
-    public static function loginCheck()
+    public static function redirect($url)
     {
+        header("location: $url");
     }
 }

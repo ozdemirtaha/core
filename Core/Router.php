@@ -117,8 +117,40 @@ class Router
                 $action = $this->params['action'];
                 $action = $this->convertToCamelCase($action);
 
-                if (preg_match('/action$/i', $action) == 0) {
-                    $controller_object->$action();
+                if (isset($this->params['method']) && !empty($this->params['method']))
+                {
+                    if ($this->params['method'] == 'get' || $this->params['method'] == 'GET')
+                    {
+                        $this->params['method'] = 'GET';
+                    }
+                    else if ($this->params['method'] == 'post' || $this->params['method'] == 'POST')
+                    {
+                        $this->params['method'] = 'POST';
+                    }
+                    else
+                    {
+                        $this->params['method'] = 'GET';
+                    }
+                }
+                else
+                {
+                    $this->params['method'] = 'GET';
+                }
+
+
+                $method = $this->params['method'];
+                $current_method = $_SERVER['REQUEST_METHOD'];
+
+                if (preg_match('/action$/i', $action) == 0)
+                {
+                    if ($method == $current_method)
+                    {
+                        $controller_object->$action();
+                    }
+                    else
+                    {
+                        throw new \Exception('No route matched.', 404);
+                    }
 
                 } else {
                     throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");

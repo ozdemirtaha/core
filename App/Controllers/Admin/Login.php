@@ -6,8 +6,21 @@ use \Core\View;
 
 class Login extends \Core\Controller
 {
+
     public function login()
     {
-        return View::renderTemplate('Admin/Auth/Login.php');
+        if (isset($_POST['asdgonder']))
+        {
+            echo 'asdasdasdasd';
+            exit;
+        }
+        return View::renderTemplate('Admin/Auth/Login');
     }
+
+    public function auth()
+    {
+        redirect('http://www.tahaozdemir.com/');
+        exit;
+    }
+
 }

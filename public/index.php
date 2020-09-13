@@ -38,7 +38,8 @@ $router->add('blog/{id:\w+}/', ['controller' => 'Home', 'action' => 'test']);
 
 /* Admin Routes */
 
-$router->add('admin/login', ['controller' => 'Admin/Auth', 'action' => 'login']);
+$router->add('admin/login', ['controller' => 'Admin\Login', 'action' => 'login']);
+$router->add('admin/auth', ['method' => 'post','controller' => 'Admin\Login', 'action' => 'auth']);
 
 
 
