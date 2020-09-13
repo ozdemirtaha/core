@@ -1,37 +1,93 @@
-<!doctype html>
-<html lang="tr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <title>Login V11</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="admin/assets/login/css/main.css">
 </head>
 <body>
 
-<div class="col-12">
-    <form action="/admin/auth" method="POST">
-        <div class="form-group">
-            <label for="formGroupExampleInput">Example label</label>
-            <input type="text" name="example" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+            <form class="login100-form validate-form">
+					<span class="login100-form-title p-b-55">
+						{{ "hello" | paragraph }}
+					</span>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" name="email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<span class="lnr lnr-envelope"></span>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<span class="lnr lnr-lock"></span>
+						</span>
+                </div>
+
+                <div class="contact100-form-checkbox m-l-4">
+                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div>
+
+                <div class="container-login100-form-btn p-t-25">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+
+                <div class="text-center w-full p-t-42 p-b-22">
+						<span class="txt1">
+							Or login with
+						</span>
+                </div>
+
+                <a href="#" class="btn-face m-b-10">
+                    <i class="fa fa-facebook-official"></i>
+                    Facebook
+                </a>
+
+                <a href="#" class="btn-google m-b-10">
+                    <img src="images/icons/icon-google.png" alt="GOOGLE">
+                    Google
+                </a>
+
+                <div class="text-center w-full p-t-115">
+						<span class="txt1">
+							Not a member?
+						</span>
+
+                    <a class="txt1 bo1 hov1" href="#">
+                        Sign up now
+                    </a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="formGroupExampleInput2">Another label</label>
-            <input type="text" name="another" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-        </div>
-        <div class="form-group">
-            <button type="submit" name="gonder" class="btn btn-primary">Gönder</button>
-        </div>
-    </form>
+    </div>
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="admin/assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="admin/assets/login/vendor/bootstrap/js/popper.js"></script>
+<script src="admin/assets/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="admin/assets/login/vendor/select2/select2.min.js"></script>
+<script src="admin/assets/login/js/main.js"></script>
+
 </body>
 </html>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
+use \Core\Helpers;
 
 /**
  * Home controller
@@ -19,7 +20,7 @@ class Home extends \Core\Controller
      */
     public function index()
     {
-        View::renderTemplate('Home/index');
+        View::render('Home/index');
     }
     /**
      * Show the test page

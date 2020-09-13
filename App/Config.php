@@ -15,9 +15,24 @@ class Config
     /**
      * WEBSITE URL
      * Enter without "http://" or "https://"
+     * End With '/'
      * @var url
      */
     const WEBSITE_URL = 'localhost/tahtsoft/core/';
+
+    /**
+     * WEBSITE URL
+     * Enter without "http://" or "https://"
+     * @var url
+     */
+    const SSL = true;
+
+    /**
+     * WEBSITE URL
+     * Enter without "http://" or "https://"
+     * @var url
+     */
+    const WWW = true;
 
     /**
      * Database host

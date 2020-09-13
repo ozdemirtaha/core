@@ -15,7 +15,7 @@ class Login extends \Core\Controller
             echo 'asdasdasdasd';
             exit;
         }
-        return View::renderTemplate('Admin/Auth/Login');
+        return View::renderTemplate('Admin/Auth/Login', ['asd' => 'asdasdasdasd']);
     }
 
     public function auth()
