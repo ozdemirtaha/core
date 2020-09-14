@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use \Core\View;
 use \Core\Helpers;
+use \App\Users;
 
 class Login extends \Core\Controller
 {
@@ -15,12 +16,17 @@ class Login extends \Core\Controller
             echo 'asdasdasdasd';
             exit;
         }
-        return View::renderTemplate('Admin/Auth/Login', ['asd' => 'asdasdasdasd']);
+        return View::renderTemplate('Admin/Auth/Login', [
+            'url' => Helpers::url()
+        ]);
     }
 
     public function auth()
     {
-        Helpers::redirect('http://www.tahaozdemir.com/');
+        if ((isset($_POST['email']) && !empty($_POST['email'])) && (isset($_POST['password']) && !empty($_POST['password'])))
+        {
+            $db = Users::getAll();
+        }
     }
 
 }

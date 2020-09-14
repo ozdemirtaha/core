@@ -25,14 +25,14 @@ class Config
      * Enter without "http://" or "https://"
      * @var url
      */
-    const SSL = true;
+    const SSL = false;
 
     /**
      * WEBSITE URL
      * Enter without "http://" or "https://"
      * @var url
      */
-    const WWW = true;
+    const WWW = false;
 
     /**
      * Database host
