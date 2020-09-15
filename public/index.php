@@ -33,6 +33,7 @@ $router->add('blog/{id:\w+}/', ['controller' => 'Home', 'action' => 'test']);
 
 
 
+$router->add('test', ['controller' => 'Test', 'action' => 'index']);
 
 
 

@@ -52,4 +52,52 @@ class View
 
         echo $twig->render($template, $args);
     }
+
+    public static function renderLayout($view, $layoutName , $args = [])
+    {
+        $layout = Layout::getLayout($layoutName);
+
+        /* Layout's Before Area */
+        foreach ($layout['before'] as $before)
+        {
+            if (!empty($before))
+            {
+                $file = dirname(__DIR__) . "/App/Views/Layouts/$layoutName/$before";
+                if (is_readable($file))
+                {
+                    require $file;
+                }
+            }
+        }
+
+        /* Layouts Content Area */
+        $view .= '.php';
+        extract($args, EXTR_SKIP);
+
+        $file = dirname(__DIR__) . "/App/Views/$view";  // relative to Core directory
+
+        if (is_readable($file)) {
+            require $file;
+        } else {
+            throw new \Exception("$file not found");
+        }
+
+
+        /* Layout's After Area */
+        foreach ($layout['after'] as $after)
+        {
+            if (!empty($after))
+            {
+                $file = dirname(__DIR__) . "/App/Views/Layouts/$layoutName/$after";
+                if (is_readable($file))
+                {
+                    require $file;
+                }
+            }
+        }
+
+
+
+
+    }
 }
