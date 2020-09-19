@@ -10,10 +10,19 @@ use App\Config;
  */
 class Helpers
 {
-    public static function redirect($url)
+    public static function redirect($url, $afterSlash = 0)
     {
-        header("location: $url");
+        if ($afterSlash === 1)
+        {
+            $url = Helpers::url($url);
+            header("location: $url");
+        }
+        else
+        {
+            header("location: $url");
+        }
     }
+
     public static function url($path = '')
     {
         if (Config::SSL === true)
@@ -37,4 +46,5 @@ class Helpers
         return $url = $ssl . $www . Config::WEBSITE_URL . $path;
 
     }
+
 }

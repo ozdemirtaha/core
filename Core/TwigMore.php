@@ -1,17 +1,28 @@
 <?php
 
-namespace Core;
 use App\Config;
 
-/**
- * Helpers
- *
- * PHP version 7.0
- */
-class TwigMore
+function asset($path = '')
 {
-    public function __construct()
+    if (Config::SSL === true)
     {
-
+        $ssl = 'https://';
     }
+    else
+    {
+        $ssl = 'http://';
+    }
+
+    if (Config::WWW === true)
+    {
+        $www = 'www.';
+    }
+    else
+    {
+        $www = '';
+    }
+
+    return $url = $ssl . $www . Config::WEBSITE_URL . $path;
+
 }
+?>

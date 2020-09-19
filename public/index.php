@@ -27,25 +27,10 @@ $router = new Core\Router();
 
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('asd-asd', ['controller' => 'Home', 'action' => 'index']);
-$router->add('blog/{id:\w+}/', ['controller' => 'Home', 'action' => 'test']);
-
-
-
-
-$router->add('test', ['controller' => 'Test', 'action' => 'index']);
-
-
 
 /* Admin Routes */
 
-$router->add('admin/login', ['controller' => 'Admin\Login', 'action' => 'login']);
-$router->add('admin/auth', ['method' => 'post','controller' => 'Admin\Login', 'action' => 'auth']);
-
-
-
-
-
+$router->add('admin/login', ['method' => 'any', 'controller' => 'Admin\Auth', 'action' => 'login']);
 
 
 

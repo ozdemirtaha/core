@@ -44,6 +44,37 @@ class Router
         // Add start and end delimiters, and case insensitive flag
         $route = '/^' . $route . '$/i';
 
+        /*******************************************************/
+        /*******************************************************/
+        if (isset($params['method']) && !empty($params['method']))
+        {
+            if ($params['method'] == 'get' || $params['method'] == 'GET')
+            {
+                $params['method'] = 'GET';
+            }
+            else if ($params['method'] == 'post' || $params['method'] == 'POST')
+            {
+                $params['method'] = 'POST';
+            }
+            else if ($params['method'] == 'any' || $params['method'] == 'ANY')
+            {
+                $params['method'] = 'ANY';
+            }
+            else
+            {
+                $params['method'] = 'GET';
+            }
+        }
+        else
+        {
+            $params['method'] = 'GET';
+        }
+
+        $route .= '___method___' . $params['method'];
+
+        /*******************************************************/
+        /*******************************************************/
+
         $this->routes[$route] = $params;
     }
 
@@ -67,8 +98,19 @@ class Router
      */
     public function match($url)
     {
-        foreach ($this->routes as $route => $params) {
-            if (preg_match($route, $url, $matches)) {
+        foreach ($this->routes as $route => $params)
+        {
+            /*
+                $route[0] = Route Path
+                $route[1] = Route Method
+            */
+            $route = explode('___method___', $route);
+            if ($route[1] == 'ANY')
+            {
+                $route[1] = $_SERVER['REQUEST_METHOD'];
+            }
+            if (preg_match($route[0], $url, $matches) && $route[1] == $_SERVER['REQUEST_METHOD'])
+            {
                 // Get named capture group values
                 foreach ($matches as $key => $match) {
                     if (is_string($key)) {
@@ -106,7 +148,8 @@ class Router
     {
         $url = $this->removeQueryStringVariables($url);
 
-        if ($this->match($url)) {
+        if ($this->match($url))
+        {
             $controller = $this->params['controller'];
             $controller = $this->convertToStudlyCaps($controller);
             $controller = $this->getNamespace() . $controller;
@@ -117,41 +160,9 @@ class Router
                 $action = $this->params['action'];
                 $action = $this->convertToCamelCase($action);
 
-                if (isset($this->params['method']) && !empty($this->params['method']))
-                {
-                    if ($this->params['method'] == 'get' || $this->params['method'] == 'GET')
-                    {
-                        $this->params['method'] = 'GET';
-                    }
-                    else if ($this->params['method'] == 'post' || $this->params['method'] == 'POST')
-                    {
-                        $this->params['method'] = 'POST';
-                    }
-                    else
-                    {
-                        $this->params['method'] = 'GET';
-                    }
-                }
-                else
-                {
-                    $this->params['method'] = 'GET';
-                }
-
-
-                $method = $this->params['method'];
-                $current_method = $_SERVER['REQUEST_METHOD'];
-
                 if (preg_match('/action$/i', $action) == 0)
                 {
-                    if ($method == $current_method)
-                    {
-                        $controller_object->$action();
-                    }
-                    else
-                    {
-                        throw new \Exception('No route matched.', 404);
-                    }
-
+                    $controller_object->$action();
                 } else {
                     throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
                 }
