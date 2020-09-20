@@ -1,5 +1,8 @@
 <?php
 
+ob_start();
+session_start();
+
 /**
  * Front controller
  *

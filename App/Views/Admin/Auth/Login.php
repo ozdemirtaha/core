@@ -30,6 +30,10 @@ if (isset($_POST) && !empty($_POST))
             $errors[] = "CSRF Token Doğrulaması ile ilgili sorun oluştu";
         }
     }
+    else
+    {
+        $errors[] = "CSRF Token Doğrulaması ile ilgili sorun oluştu";
+    }
 
     // CSRF Token Time Validation
     $max_time = 60*60*24; // in seconds
@@ -46,6 +50,10 @@ if (isset($_POST) && !empty($_POST))
             unset($_SESSION['csrf_token']);
             unset($_SESSION['csrf_token_time']);
         }
+    }
+    else
+    {
+        $errors[] = "CSRF Token Doğrulaması ile ilgili sorun oluştu";
     }
 
     if (empty($errors))
@@ -91,15 +99,15 @@ $_SESSION['csrf_token_time'] = time();
     <title>Login V11</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="<?=\Core\Helpers::url('admin/assets/login/images/icons/favicon.ico')?>"/>
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/vendor/bootstrap/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/vendor/animate/animate.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/vendor/css-hamburgers/hamburgers.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/vendor/select2/select2.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/css/util.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('admin/assets/login/css/main.css')?>">
+    <link rel="icon" type="image/png" href="<?=\Core\Helpers::url('assets/admin/assets/login/images/icons/favicon.ico')?>"/>
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/bootstrap/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/animate/animate.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/css-hamburgers/hamburgers.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/select2/select2.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/css/util.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?=\Core\Helpers::url('assets/admin/assets/login/css/main.css')?>">
 </head>
 <body>
 
@@ -123,6 +131,8 @@ $_SESSION['csrf_token_time'] = time();
                     echo '</div>';
                 }
                 ?>
+
+                <input type="hidden" name="csrf_token" value="<?=$token?>">
 
                 <div class="wrap-input100 validate-input m-b-16" data-validate = "Lütfen geçerli bir e-posta adresi giriniz">
                     <input class="input100" type="text" name="email" placeholder="E-posta">
@@ -165,11 +175,11 @@ $_SESSION['csrf_token_time'] = time();
     </div>
 </div>
 
-<script src="<?=\Core\Helpers::url('admin/assets/login/vendor/jquery/jquery-3.2.1.min.js')?>"></script>
-<script src="<?=\Core\Helpers::url('admin/assets/login/vendor/bootstrap/js/popper.js')?>"></script>
-<script src="<?=\Core\Helpers::url('admin/assets/login/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
-<script src="<?=\Core\Helpers::url('admin/assets/login/vendor/select2/select2.min.js')?>"></script>
-<script src="<?=\Core\Helpers::url('admin/assets/login/js/main.js')?>"></script>
+<script src="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/jquery/jquery-3.2.1.min.js')?>"></script>
+<script src="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/bootstrap/js/popper.js')?>"></script>
+<script src="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
+<script src="<?=\Core\Helpers::url('assets/admin/assets/login/vendor/select2/select2.min.js')?>"></script>
+<script src="<?=\Core\Helpers::url('assets/admin/assets/login/js/main.js')?>"></script>
 
 </body>
 </html>
